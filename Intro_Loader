@@ -388,3 +388,7 @@
             end)
         end)
     end)
+
+
+wait(2)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/AAHub"))()
