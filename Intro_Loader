@@ -391,4 +391,9 @@
 
 
 wait(2)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/AAHub"))()
+if _G.thaimode == false or _G.thaimode == nil then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/AAHub"))()
+elseif _G.thaimode == true then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/ThaiAAHub"))()
+end
+
