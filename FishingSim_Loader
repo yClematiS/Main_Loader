@@ -391,4 +391,10 @@
 
 
 wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/FishingSim2/refs/heads/main/Main"))()
+local tocheck = game.PlaceId
+if tocheck == 2866967438 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/FishingSim2/refs/heads/main/Main"))()
+end
+if tocheck == 13378270416 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/FishingSim2/refs/heads/main/SecondSea"))()
+end
