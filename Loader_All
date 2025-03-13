@@ -18,6 +18,8 @@ elseif tocheck == 13378270416 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/FishingSim2/refs/heads/main/SecondSea"))() --Fishing Sim2
 elseif tocheck == 71017572336194 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/BizBlox/refs/heads/main/Main"))() --BizBlox
+elseif tocheck == 99995671928896 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/RuneSlayer/main/NoCD"))() --Rune Slayer
 else 
     local success, message = pcall(function()
         beta = _G.AAbetaversion
