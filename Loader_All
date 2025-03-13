@@ -1,2 +1,29 @@
-wait(1)
-print("TEST Obfucation")
+print("Phase 1 : Loaded")
+
+-- Fishing Simulator 2
+local tocheck = game.PlaceId
+if tocheck == 2866967438 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/FishingSim2/refs/heads/main/Main"))()
+end
+if tocheck == 13378270416 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/FishingSim2/refs/heads/main/SecondSea"))()
+end
+
+-- BizBlox
+if tocheck == 71017572336194 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/BizBlox/refs/heads/main/Main"))()
+end
+
+-- Anime Adventures
+local playerGui = game:GetService("Players").LocalPlayer.PlayerGui
+local runService = game:GetService("RunService")
+
+local otherui1 = playerGui.spawn_units
+
+if otherui1 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/Prototype-V3eas5abe5"))()
+else
+    print("Not 3")
+end
+
+print("Phase 2 : Loaded")
