@@ -23,6 +23,7 @@ local otherui1 = playerGui.spawn_units
 if otherui1 and beta then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/Prototype-V3eas5abe5"))()
 if otherui1 and not beta then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Anime-/refs/heads/main/AAHub"))()
 else
     print("Not 3")
 end
