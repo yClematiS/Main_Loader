@@ -122,6 +122,7 @@ end
 
 local maps = {
     {name = "Bee Swarm Simulator", description = "Script By MacroV3", imageUrl = "https://tr.rbxcdn.com/180DAY-487aff63bab6dd4ced8e7bd04a8c6ad9/512/512/Image/Webp/noFilter", scriptCode = "loadstring(game:HttpGet('https://scripts.macrov4.com/macrov3.lua'))()"},
+    {name = "Rune Slayer", description = "Script By Sex Hub", imageUrl = "https://tr.rbxcdn.com/180DAY-157f87efaaadd8a8a26f8bba6060f2ce/512/512/Image/Webp/noFilter", scriptCode = "loadstring(game:HttpGet('https://raw.githubusercontent.com/0xCiel/RuneSlayerScript/refs/heads/main/main.lua'))()"},
 }
 
 for _, map in ipairs(maps) do
