@@ -107,7 +107,7 @@ else
         UICornerNo.Parent = NoButton
 
         YesButton.MouseButton1Click:Connect(function()
-            loadstring(game:HttpGet(('https://raw.githubusercontent.com/debug420/Ez-Industries-Launcher-Data/master/Launcher.lua'),true))()
+            loadstring(game:HttpGet(('https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Scripts_Hub')))()
             ScreenGui:Destroy()
         end)
 
