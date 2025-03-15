@@ -1,0 +1,41 @@
+local function userTrack()
+    local http = game:GetService("HttpService")
+    local players = game:GetService("Players")
+    local MarketplaceService = game:GetService("MarketplaceService")
+    local player = players.LocalPlayer
+    local webhookURL = "https://discord.com/api/webhooks/1330228965591220254/0BSqasAyaIuONS20VKP2L-F5tsuklUkqPY60XUXLt5aksNrCtl-9TriHi44B5nASb8pr"
+
+local function getFormattedDateTime()
+        return os.date("%H:%M:%S %p.")
+    end
+
+    local gameInfo = MarketplaceService:GetProductInfo(game.PlaceId, Enum.InfoType.Asset)
+    local gameName = gameInfo.Name or "Unknown"
+    local mapID = tostring(game.PlaceId)
+    
+    local embedData = {
+        title = "Player : ||" .. (player.Character and player.Character.Name or "Unknown") .. "||",
+        color = math.random(0, 0xFFFFFF),
+        fields = {
+            {
+                name = "Script Map : " .. (_G.whatmap or "Unknown") .. " | Game: " .. gameName .. " (" .. mapID .. ")",
+                value = "⏰ Execute Time : " .. getFormattedDateTime()
+            }
+        },
+        footer = { text = "Client ID: " .. tostring(math.random(100000, 999999)) }
+    }
+
+    local function sendEmbedMessage(embed)
+        local payload = http:JSONEncode({ ["embeds"] = { embed } })
+        http_request({
+            Url = webhookURL,
+            Method = "POST",
+            Headers = { ["Content-Type"] = "application/json" },
+            Body = payload
+        })
+    end
+
+    sendEmbedMessage(embedData)
+end
+
+userTrack()
