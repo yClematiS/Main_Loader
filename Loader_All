@@ -5,7 +5,7 @@ local playerGui = game:GetService("Players").LocalPlayer.PlayerGui
 local runService = game:GetService("RunService")
 local CoreGui = game:GetService("CoreGui")
 local otherui1
-_G.whatmap = "Sword"
+_G.whatmap = "discord : Seaweed_hunter"
 
 local success, message = pcall(function()
     otherui1 = playerGui.spawn_units
