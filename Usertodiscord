@@ -29,7 +29,7 @@ local function getFormattedDateTime()
                 value = "⏰ Execute Time : " .. getFormattedDateTime()
             }
         },
-        footer = { text = "Client ID: " .. tostring(math.random(100000, 999999)) .. " | Executor : " .. myexec }
+        footer = { text = "Client ID: " .. tostring(math.random(100000, 999999)) .. " | Executor : " .. tostring(myexec) }
     }
 
     local function sendEmbedMessage(embed)
