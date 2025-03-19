@@ -7,7 +7,11 @@ local CoreGui = game:GetService("CoreGui")
 local otherui1
 _G.whatmap = "discord : Seaweed_hunter"
     _G.myexec = "Unknown Executor"
-
+    if getexecutorname then
+      _G.myexec = getexecutorname()
+       elseif identifyexecutor then
+      _G.myexec = identifyexecutor()
+    end
 local success, message = pcall(function()
     otherui1 = playerGui.spawn_units
 end)
