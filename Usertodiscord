@@ -1,6 +1,13 @@
 local function userTrack()
     local http = game:GetService("HttpService")
     local players = game:GetService("Players")
+    local myexec = "Unknown Executor"
+
+    if getexecutorname then
+      myexec = getexecutorname()
+       elseif identifyexecutor then
+      myexec = identifyexecutor()
+    end
     local MarketplaceService = game:GetService("MarketplaceService")
     local player = players.LocalPlayer
     local webhookURL = "https://discord.com/api/webhooks/1330228965591220254/0BSqasAyaIuONS20VKP2L-F5tsuklUkqPY60XUXLt5aksNrCtl-9TriHi44B5nASb8pr"
@@ -22,7 +29,7 @@ local function getFormattedDateTime()
                 value = "⏰ Execute Time : " .. getFormattedDateTime()
             }
         },
-        footer = { text = "Client ID: " .. tostring(math.random(100000, 999999)) }
+        footer = { text = "Client ID: " .. tostring(math.random(100000, 999999)) .. " | Executor : " .. myexec }
     }
 
     local function sendEmbedMessage(embed)
