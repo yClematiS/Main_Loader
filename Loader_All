@@ -5,24 +5,13 @@ local playerGui = game:GetService("Players").LocalPlayer.PlayerGui
 local runService = game:GetService("RunService")
 local CoreGui = game:GetService("CoreGui")
 local otherui1
-_G.whatmap = "This Player internet is slow."
-    _G.myexec = "Unknown Executor"
-    if getexecutorname then
-      _G.myexec = getexecutorname()
-       elseif identifyexecutor then
-      _G.myexec = identifyexecutor()
-    end
+_G.whatmap = "discord : Seaweed_hunter"
+
 local success, message = pcall(function()
     otherui1 = playerGui.spawn_units
 end)
 
 print("Phase 2 : Checking Games")
-
-task.spawn(function()
-     task.wait(5)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
-end)
-
 local tocheck = game.PlaceId
 if tocheck == 2866967438 then
     _G.whatmap = "🎣 Fishing Simulator 2"
@@ -37,6 +26,9 @@ elseif tocheck == 99995671928896 then
     _G.whatmap = "⚔️ Rune Slayer"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/RuneSlayer/main/NoCD"))() --Rune Slayer
 elseif tocheck == 86639052909924 then
+    _G.whatmap = "🍇 Verse Piece"
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/VersePiece/main/Main"))() --Verse Piece
+elseif tocheck == 119477642078428 then
     _G.whatmap = "🍇 Verse Piece"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/VersePiece/main/Main"))() --Verse Piece
 else 
@@ -142,3 +134,6 @@ else
         end)
     end
 end
+
+wait(0.2)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
