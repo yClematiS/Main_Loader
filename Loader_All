@@ -31,10 +31,10 @@ elseif tocheck == 71017572336194 then
 elseif tocheck == 99995671928896 then
     _G.whatmap = "⚔️ Rune Slayer"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/RuneSlayer/main/NoCD"))() --Rune Slayer
-elseif tocheck == 86639052909924 and _G.paid then
+elseif tocheck == 86639052909924 or 119477642078428 and _G.paid then
     _G.whatmap = "🍇 Verse Piece"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/VersePiece/main/Main"))() --Verse Piece
-elseif tocheck == 119477642078428 and not _G.paid then
+elseif tocheck == 119477642078428 or 86639052909924 and not _G.paid then
     _G.whatmap = "🍇 Verse Piece"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/VersePiece/main/Free"))() --Verse Piece
 else 
