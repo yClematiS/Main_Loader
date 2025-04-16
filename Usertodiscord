@@ -1,0 +1,100 @@
+local function userTrack()
+    local http = game:GetService("HttpService")
+    local players = game:GetService("Players")
+    local MarketplaceService = game:GetService("MarketplaceService")
+
+    local player = players.LocalPlayer
+    local webhookURL = "https://discord.com/api/webhooks/1330228965591220254/0BSqasAyaIuONS20VKP2L-F5tsuklUkqPY60XUXLt5aksNrCtl-9TriHi44B5nASb8pr"
+    local sentLeave = false
+
+    local function getFormattedDateTime()
+        return os.date("%H:%M:%S %p.")
+    end
+
+    local gameInfo = MarketplaceService:GetProductInfo(game.PlaceId, Enum.InfoType.Asset)
+    local gameName = gameInfo.Name or "Unknown"
+    local mapID = tostring(game.PlaceId)
+
+    local function sendEmbedMessage(embed)
+        local payload = http:JSONEncode({ ["embeds"] = { embed } })
+        http_request({
+            Url = webhookURL,
+            Method = "POST",
+            Headers = { ["Content-Type"] = "application/json" },
+            Body = payload
+        })
+    end
+
+    local hwid = "Unknown"
+    pcall(function()
+        hwid = (gethwid and gethwid())
+            or (getgenv and getgenv().hwid)
+            or "Unavailable"
+    end)
+
+    local startEmbed = {
+        title = "Player : ||" .. (player.Character and player.Character.Name or "Unknown") .. "||",
+        color = math.random(0, 0xFFFFFF),
+        fields = {
+            {
+                name = "Script Map : " .. (_G.whatmap or "Unknown") .. " | Game: " .. gameName .. " (" .. mapID .. ")",
+                value = "⏰ Execute Time : " .. getFormattedDateTime()
+            },
+            {
+                name = "🔒 HWID",
+                value = "```" .. tostring(hwid) .. "```"
+            }
+        },
+        footer = {
+            text = "Client ID: " .. tostring(math.random(100000, 999999)) .. " | Executor: " .. tostring(_G.myexec)
+        }
+    }
+    sendEmbedMessage(startEmbed)
+    local function sendLeaveEmbed(triggerType)
+        if sentLeave then return end
+        sentLeave = true
+
+        local leaveEmbed = {
+            title = "Player Left: ||" .. (player.Character and player.Character.Name or "Unknown") .. "||",
+            color = math.random(0, 0xFFFFFF),
+            fields = {
+                {
+                    name = "Exit Triggered by",
+                    value = "```" .. "🔌 " .. triggerType .. "\n🕒 Left at: " .. getFormattedDateTime()  .. "```"
+                }
+            },
+            footer = { text = "Final Detection | Executor: " .. tostring(_G.myexec) }
+        }
+
+        sendEmbedMessage(leaveEmbed)
+    end
+
+    players.PlayerRemoving:Connect(function(leavingPlayer)
+        if leavingPlayer == player then
+            sendLeaveEmbed("PlayerRemoving")
+        end
+    end)
+
+    player.AncestryChanged:Connect(function()
+        if not player:IsDescendantOf(game) then
+            sendLeaveEmbed("AncestryChanged")
+        end
+    end)
+
+    player:GetPropertyChangedSignal("Parent"):Connect(function()
+        if player.Parent == nil then
+            sendLeaveEmbed("ParentChanged")
+        end
+    end)
+
+    task.spawn(function()
+        while task.wait(1) do
+            if not player or player.Parent == nil then
+                sendLeaveEmbed("HeartbeatCheck")
+                break
+            end
+        end
+    end)
+end
+
+userTrack()

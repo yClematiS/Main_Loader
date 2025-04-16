@@ -1,0 +1,172 @@
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+
+if CoreGui:FindFirstChild("ClematisHub") then
+    CoreGui:FindFirstChild("ClematisHub"):Destroy()
+end
+
+local ClematisHub = Instance.new("ScreenGui")
+ClematisHub.Name = "ClematisHub"
+ClematisHub.Parent = CoreGui
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 400, 0, 500)
+MainFrame.Position = UDim2.new(0.5, -200, 0.5, -250)
+MainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 100)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ClematisHub
+MainFrame.ClipsDescendants = true
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0.1, 0)
+UICorner.Parent = MainFrame
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.BackgroundTransparency = 1
+Title.Text = "Clematis Hub"
+Title.TextSize = 24
+Title.Font = Enum.Font.SourceSansBold
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Parent = MainFrame
+
+local SearchBox = Instance.new("TextBox")
+SearchBox.Size = UDim2.new(1, -20, 0, 30)
+SearchBox.Position = UDim2.new(0, 10, 0, 50)
+SearchBox.PlaceholderText = "Search for a map..."
+SearchBox.TextSize = 14
+SearchBox.Font = Enum.Font.SourceSans
+SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+SearchBox.BackgroundColor3 = Color3.fromRGB(70, 70, 150)
+SearchBox.ClearTextOnFocus = false
+SearchBox.Parent = MainFrame
+
+local UICornerSearch = Instance.new("UICorner")
+UICornerSearch.CornerRadius = UDim.new(0.1, 0)
+UICornerSearch.Parent = SearchBox
+
+local ScrollFrame = Instance.new("ScrollingFrame")
+ScrollFrame.Size = UDim2.new(1, -20, 1, -100)
+ScrollFrame.Position = UDim2.new(0, 10, 0, 90)
+ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+ScrollFrame.ScrollBarThickness = 6
+ScrollFrame.BackgroundTransparency = 1
+ScrollFrame.Parent = MainFrame
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Padding = UDim.new(0, 10)
+UIListLayout.Parent = ScrollFrame
+
+local function addMap(mapName, mapDescription, imageUrl, scriptCode)
+    local MapFrame = Instance.new("Frame")
+    MapFrame.Size = UDim2.new(1, -10, 0, 100)
+    MapFrame.BackgroundColor3 = Color3.fromRGB(70, 70, 150)
+    MapFrame.Parent = ScrollFrame
+
+    local UICorner2 = Instance.new("UICorner")
+    UICorner2.CornerRadius = UDim.new(0.1, 0)
+    UICorner2.Parent = MapFrame
+
+    local MapImage = Instance.new("ImageLabel")
+    MapImage.Size = UDim2.new(0, 70, 0, 70)
+    MapImage.Position = UDim2.new(0, 5, 0.5, -35)
+    MapImage.Image = imageUrl
+    MapImage.Parent = MapFrame
+
+    local MapTitle = Instance.new("TextLabel")
+    MapTitle.Size = UDim2.new(1, -90, 0, 30)
+    MapTitle.Position = UDim2.new(0, 80, 0, 10)
+    MapTitle.Text = mapName
+    MapTitle.TextSize = 18
+    MapTitle.Font = Enum.Font.SourceSansBold
+    MapTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    MapTitle.BackgroundTransparency = 1
+    MapTitle.Parent = MapFrame
+
+    local MapDescription = Instance.new("TextLabel")
+    MapDescription.Size = UDim2.new(1, -90, 0, 20)
+    MapDescription.Position = UDim2.new(0, 80, 0, 40)
+    MapDescription.Text = mapDescription
+    MapDescription.TextSize = 12
+    MapDescription.Font = Enum.Font.SourceSans
+    MapDescription.TextColor3 = Color3.fromRGB(255, 255, 255)
+    MapDescription.BackgroundTransparency = 1
+    MapDescription.Parent = MapFrame
+
+    local ExecuteButton = Instance.new("TextButton")
+    ExecuteButton.Size = UDim2.new(0, 100, 0, 30)
+    ExecuteButton.Position = UDim2.new(1, -110, 1, -40)
+    ExecuteButton.Text = "Execute"
+    ExecuteButton.TextSize = 16
+    ExecuteButton.Font = Enum.Font.SourceSansBold
+    ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ExecuteButton.BackgroundColor3 = Color3.fromRGB(100, 50, 200)
+    ExecuteButton.Parent = MapFrame
+
+    local UICorner3 = Instance.new("UICorner")
+    UICorner3.CornerRadius = UDim.new(0.2, 0)
+    UICorner3.Parent = ExecuteButton
+
+    ExecuteButton.MouseButton1Click:Connect(function()
+        print("Executing script for " .. mapName)
+        local success, err = pcall(function()
+            loadstring(scriptCode)()
+        end)
+        if not success then
+            warn("Error executing script: " .. err)
+        end
+    end)
+
+    ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, UIListLayout.AbsoluteContentSize.Y + 10)
+end
+
+local maps = {
+    {name = "Bee Swarm Simulator", description = "Script By MacroV3", imageUrl = "https://tr.rbxcdn.com/180DAY-487aff63bab6dd4ced8e7bd04a8c6ad9/512/512/Image/Webp/noFilter", scriptCode = "loadstring(game:HttpGet('https://scripts.macrov4.com/macrov3.lua'))()"},
+    {name = "Bee Swarm Simulator", description = "Script By Chirs888", imageUrl = "https://tr.rbxcdn.com/180DAY-487aff63bab6dd4ced8e7bd04a8c6ad9/512/512/Image/Webp/noFilter", scriptCode = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Chris8889/atlasbss/main/script.lua'))()"},
+    {name = "Rune Slayer", description = "Script By Sex Hub", imageUrl = "https://tr.rbxcdn.com/180DAY-157f87efaaadd8a8a26f8bba6060f2ce/512/512/Image/Webp/noFilter", scriptCode = "loadstring(game:HttpGet('https://raw.githubusercontent.com/0xCiel/RuneSlayerScript/refs/heads/main/main.lua'))()"},
+}
+
+for _, map in ipairs(maps) do
+    addMap(map.name, map.description, map.imageUrl, map.scriptCode)
+end
+
+SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
+    local query = SearchBox.Text:lower()
+    for _, mapFrame in ipairs(ScrollFrame:GetChildren()) do
+        if mapFrame:IsA("Frame") then
+            local mapTitle = mapFrame:FindFirstChild("MapTitle")
+            if mapTitle then
+                local mapName = mapTitle.Text:lower()
+                if query == "" or mapName:find(query) then
+                    mapFrame.Visible = true
+                else
+                    mapFrame.Visible = false
+                end
+            end
+        end
+    end
+end)
+
+game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.Escape then
+        ClematisHub:Destroy()
+    end
+end)
+
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -40, 0, 10)
+CloseButton.Text = "X"
+CloseButton.TextSize = 20
+CloseButton.Font = Enum.Font.SourceSansBold
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+CloseButton.Parent = MainFrame
+
+local UICornerClose = Instance.new("UICorner")
+UICornerClose.CornerRadius = UDim.new(0.5, 0)
+UICornerClose.Parent = CloseButton
+
+CloseButton.MouseButton1Click:Connect(function()
+    ClematisHub:Destroy()
+end)
