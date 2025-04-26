@@ -4,13 +4,13 @@ spawn(function()
     end
 
     if isHooked(game.HttpGet) or isHooked(loadstring) or isHooked(request) then
-        while true do end -- Freeze
+        while true do end
     end
 end)
 
 spawn(function()
     if not islclosure(game.HttpGet) then
-        while true do end -- Freeze
+        while true do end
     end
 end)
 
