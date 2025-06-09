@@ -4,7 +4,7 @@ local function userTrack()
      local MarketplaceService = game:GetService("MarketplaceService")
  
      local player = players.LocalPlayer
-     local webhookURL = "https://discord.com/api/webhooks/1330228965591220254/0BSqasAyaIuONS20VKP2L-F5tsuklUkqPY60XUXLt5aksNrCtl-9TriHi44B5nASb8pr"
+     local webhookURL = "https://discord.com/api/webhooks/1381658391612489889/ia7D6Y0pY2V01y31Whko6I3QbniKs4ZHrvahBD9DnGhxOsuj5ebX0nORMTBaUmcvTBRJ"
      local sentLeave = false
  
      local function getFormattedDateTime()
