@@ -50,7 +50,7 @@ local function userTrack()
              }
          },
          footer = {
-             text = "Key ID: Paid | Executor: " .. tostring(_G.myexec)
+             text = "Key ID: Premium | Executor: " .. tostring(_G.myexec)
          }
      }
      sendEmbedMessage(startEmbed)
